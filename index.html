@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Dr. Lalit Pandey, postdoctoral researcher in spintronics at Chalmers University of Technology: spin-orbit torque, van der Waals magnets, nanofabrication.">
+<meta property="og:title" content="Dr. Lalit Pandey">
+<meta property="og:description" content="Spintronics researcher at Chalmers University of Technology, Gothenburg.">
+<meta property="og:image" content="photo.jpg">
+<link rel="icon" href="photo.jpg">
+<title>Dr. Lalit Pandey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (max 1080px) with a left "section index" rail on wide screens; hero pairs identity with a live spin-lattice canvas. */
+:root{
+  --bg:#f2f4f6;
+  --surface:#ffffff;
+  --ink:#16202b;
+  --muted:#56626f;
+  --line:#d9dee4;
+  --up:#2f5bd3;      /* spin-up / cobalt */
+  --down:#d2513f;    /* spin-down / coral */
+  --accent:#2f5bd3;
+  --chip:#e7ecf4;
+  --display:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body:"Literata", Georgia, "Times New Roman", serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f141a; --surface:#161d25; --ink:#e6ebf0; --muted:#9aa6b2; --line:#2a333d;
+    --up:#7d9df0; --down:#f08a77; --accent:#7d9df0; --chip:#1e2832; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f141a; --surface:#161d25; --ink:#e6ebf0; --muted:#9aa6b2; --line:#2a333d;
+  --up:#7d9df0; --down:#f08a77; --accent:#7d9df0; --chip:#1e2832; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:20px;padding-block:0}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto}
+
+/* top nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-inline:-20px;padding-inline:20px}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{font-family:var(--display);font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.navlinks{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--display);font-size:14px;font-weight:500}
+.navlinks a{color:var(--muted);text-decoration:none}
+.navlinks a:hover{color:var(--ink)}
+@media (max-width:760px){.navlinks{display:none}}
+
+/* hero */
+header.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;padding-block:56px 40px}
+@media (max-width:860px){header.hero{grid-template-columns:1fr;gap:28px;padding-block:36px 24px}}
+.hero > *{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,6.4vw,68px);line-height:1.02;letter-spacing:-.03em;margin:10px 0 14px;text-wrap:balance}
+h1 .dr{font-weight:500;color:var(--muted)}
+.role{font-family:var(--display);font-size:clamp(18px,2.2vw,22px);font-weight:500;line-height:1.35;margin:0 0 14px;text-wrap:balance}
+.affil{color:var(--muted);margin:0 0 22px;font-size:16px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:14.5px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn svg{width:16px;height:16px;flex:none}
+
+.portrait{margin:0;justify-self:center;position:relative;width:min(340px,100%)}
+.portrait::before{content:"";position:absolute;inset:14px -14px -14px 14px;border-radius:50%;background:conic-gradient(var(--up) 0 50%,var(--down) 50% 100%);opacity:.9}
+.portrait img{position:relative;display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:50%;background:#fff;border:6px solid var(--bg)}
+@media (max-width:860px){.portrait{width:min(220px,70%);order:-1;justify-self:start}}
+.lattice{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 12px 8px;max-width:520px}
+.lattice canvas{display:block;width:100%;height:auto;aspect-ratio:4/3;max-width:100%}
+.lattice figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:8px}
+.legend{display:flex;gap:12px}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:0}
+
+/* stats strip */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-block:8px 0}
+.stats div{padding:18px 16px 18px 0;min-width:0}
+.stats div + div{padding-left:16px;border-left:1px solid var(--line)}
+.stats b{display:block;font-family:var(--display);font-size:30px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stats span{font-size:14px;color:var(--muted);line-height:1.35;display:block}
+@media (max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.stats div:nth-child(3){padding-left:0;border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* sections */
+section{display:grid;grid-template-columns:200px 1fr;gap:32px;padding-block:52px;border-bottom:1px solid var(--line)}
+section > *{min-width:0}
+@media (max-width:860px){section{grid-template-columns:1fr;gap:14px;padding-block:38px}}
+.sechead{position:sticky;top:76px;align-self:start}
+@media (max-width:860px){.sechead{position:static}}
+h2{font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.02em;margin:0;line-height:1.15}
+.sechead p{font-family:var(--mono);font-size:12px;color:var(--muted);margin:6px 0 0;letter-spacing:.04em}
+h3{font-family:var(--display);font-size:19px;font-weight:650;letter-spacing:-.01em;margin:0;line-height:1.3}
+.lede{font-size:19px;line-height:1.6;max-width:65ch;margin:0 0 18px}
+.prose p{max-width:65ch;margin:0 0 14px}
+
+.interests{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin:22px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.interests li{padding:12px 16px 12px 0;border-bottom:1px solid var(--line);font-size:16px;display:flex;gap:10px;align-items:baseline}
+.interests li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--up);transform:translateY(-1px)}
+.interests li:nth-child(even)::before{background:var(--down)}
+@media (max-width:600px){.interests{grid-template-columns:1fr}}
+
+.feature{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.feature .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--down)}
+.feature h3{margin:8px 0 8px;font-size:20px;text-wrap:balance}
+.feature p{margin:0 0 10px;color:var(--muted);font-size:15.5px;max-width:65ch}
+.feature .cite{font-family:var(--mono);font-size:12.5px;color:var(--ink)}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:30px}
+.tl li{display:grid;grid-template-columns:120px 1fr;gap:20px}
+.tl li > *{min-width:0}
+@media (max-width:600px){.tl li{grid-template-columns:1fr;gap:4px}}
+.when{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.where{color:var(--muted);font-size:15.5px;margin:2px 0 10px}
+.tl ul{margin:0;padding-left:18px;font-size:15.5px}
+.tl ul li{display:list-item;margin-bottom:5px}
+.thesis{font-size:15px;color:var(--muted);margin:6px 0 0;max-width:65ch}
+.thesis em{color:var(--ink)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 32px}
+@media (max-width:640px){.skills{grid-template-columns:1fr}}
+.skills h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-family:var(--display);font-size:13.5px;font-weight:500;background:var(--chip);color:var(--ink);padding:5px 11px;border-radius:7px;line-height:1.3}
+
+/* publications */
+.pubtools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:18px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
+.seg button{font-family:var(--display);font-size:13.5px;font-weight:600;border:0;background:transparent;color:var(--muted);padding:7px 14px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.pubcount{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.pubs{list-style:none;margin:0;padding:0}
+.yr{font-family:var(--display);font-weight:700;font-size:15px;color:var(--muted);padding:18px 0 6px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.pub{padding:12px 0;border-bottom:1px solid var(--line);display:grid;gap:3px}
+.pub .t{font-family:var(--display);font-weight:600;font-size:16px;line-height:1.35;color:var(--ink);text-decoration:none}
+.pub a.t:hover{text-decoration:underline}
+.pub .a{font-size:14px;color:var(--muted);line-height:1.45}
+.pub .a b{color:var(--ink);font-weight:600}
+.pub .j{font-family:var(--mono);font-size:12.5px;color:var(--ink)}
+.badge{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--down);border:1px solid currentColor;border-radius:4px;padding:0 5px;margin-left:8px;vertical-align:2px}
+.morepubs{margin-top:16px;font-size:15px;color:var(--muted)}
+
+/* awards & talks */
+.twocol{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+@media (max-width:700px){.twocol{grid-template-columns:1fr}}
+.list{list-style:none;margin:0;padding:0}
+.list li{padding:11px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:66px 1fr;gap:12px;font-size:15.5px;line-height:1.45}
+.list li > *{min-width:0}
+.list .y{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:2px}
+.list small{display:block;color:var(--muted);font-size:13.5px}
+.star{color:var(--down);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+
+/* contact */
+.contact{display:grid;gap:14px;max-width:640px}
+.crow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:14px 18px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.crow .k{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);width:80px}
+.crow .v{font-family:var(--display);font-weight:600;font-size:16px;user-select:all;overflow-wrap:anywhere;flex:1;min-width:0}
+.copy{font-family:var(--display);font-size:13px;font-weight:600;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+footer{padding-block:28px 40px;font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+<nav class="top" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#top">Lalit Pandey</a>
+    <div class="navlinks">
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#publications">Publications</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Spintronics · 2D magnets · Nanofabrication</div>
+      <h1><span class="dr">Dr.</span> Lalit Pandey</h1>
+      <p class="role">Experimental physicist working on spin–orbit torque in van der Waals magnetic heterostructures.</p>
+      <p class="affil">Postdoctoral Researcher, Quantum Device Physics Group<br>Department of Microtechnology and Nanoscience (MC2), Chalmers University of Technology, Gothenburg, Sweden</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn" id="scholarLink" href="https://scholar.google.com/citations?user=5H2qZDMAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6.6 9.4V16c0 1.9 3 3.6 6.6 3.6s6.6-1.7 6.6-3.6v-3.6L12 16l-6.6-3.6z"/></svg>
+          Google Scholar
+        </a>
+        <a class="btn" id="linkedinLink" href="https://www.linkedin.com/in/lalit-pandey-391956119/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zm7 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5c0-1.2-.02-2.73-1.66-2.73-1.67 0-1.92 1.3-1.92 2.65V21h-4V9.75z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <img src="photo.jpg" alt="Portrait of Dr. Lalit Pandey" width="480" height="480">
+    </figure>
+  </header>
+
+  <div class="stats" role="list">
+    <div role="listitem"><b>40+</b><span>peer-reviewed publications</span></div>
+    <div role="listitem"><b>6</b><span>first-author papers</span></div>
+    <div role="listitem"><b>2025</b><span>Nature Communications, first author</span></div>
+    <div role="listitem"><b>MSCA</b><span>Seal of Excellence, 2024</span></div>
+  </div>
+
+  <section id="research">
+    <div class="sechead"><h2>Research</h2><p>What I work on</p></div>
+    <div class="prose">
+      <p class="lede">I build and measure spintronic devices from atomically thin magnets. My work asks how electrical current can switch magnetization efficiently, at room temperature and without an external magnetic field.</p>
+      <p>At Chalmers I study spin–orbit torque in 2D van der Waals magnetic heterostructures. I fabricate the devices myself in the cleanroom, from 100&nbsp;mm wafer processing to electron-beam lithography and plasma etching, and characterise them with DC and harmonic Hall measurements, ferromagnetic resonance, and low-temperature magnetotransport.</p>
+      <p>During my PhD at IIT Delhi I developed a sputtering route for Te-based topological and 2D magnetic films (Bi<sub>2</sub>Te<sub>3</sub>, Sb<sub>2</sub>Te<sub>3</sub>, PdTe<sub>2</sub>, CrTe<sub>2</sub>), reaching structural and transport quality comparable to MBE-grown films, and studied spin pumping and spin-to-charge conversion in topological insulator/ferromagnet stacks. The long-term goal is energy-efficient spintronic and magnetoelectric devices for future information technology.</p>
+      <ul class="interests">
+        <li>Spin–orbit torque and current-induced switching</li>
+        <li>van der Waals magnets and 2D heterostructures</li>
+        <li>Magnetization dynamics and higher-harmonic transport</li>
+        <li>Topological quantum materials</li>
+        <li>Spintronic and magnetoelectric devices</li>
+        <li>Thin-film growth and nanofabrication</li>
+      </ul>
+      <div class="feature">
+        <div class="tag">Highlight · Nature Communications 2025</div>
+        <h3>Tunable unconventional spin–orbit torque magnetization dynamics in van der Waals heterostructures</h3>
+        <p>Room-temperature, field-free switching of an out-of-plane van der Waals ferromagnet driven by unconventional spin–orbit torque, with the torque tunable in an all-vdW device stack.</p>
+        <div class="cite">L. Pandey, B. Zhao, K. Tenzin, et al. · Nat. Commun. 16, 8722 (2025)</div>
+        <figure class="lattice" style="margin:18px 0 0">
+          <canvas id="spins" width="480" height="360" aria-label="Animated schematic: a current pulse sweeps across a lattice of out-of-plane spins and switches them from up to down without an external magnetic field."></canvas>
+          <figcaption>
+            <span>Field-free SOT switching · schematic</span>
+            <span class="legend"><span><i style="background:var(--up)"></i>m<sub>z</sub> = +1</span><span><i style="background:var(--down)"></i>m<sub>z</sub> = −1</span></span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sechead"><h2>Experience &amp; education</h2><p>2013 – present</p></div>
+    <ol class="tl">
+      <li>
+        <div class="when">2023 – now</div>
+        <div>
+          <h3>Postdoctoral Researcher</h3>
+          <div class="where">Quantum Device Physics Group, MC2, Chalmers University of Technology, Sweden</div>
+          <ul>
+            <li>Demonstrated room-temperature, field-free magnetization switching in van der Waals heterostructures using unconventional spin–orbit torque.</li>
+            <li>Fabricate nanoscale spintronic and quantum devices in Chalmers' 1240&nbsp;m² cleanroom: e-beam lithography (Raith EBPG 5200, JEOL JBX-9300FS), ICP/RIE and IBE etching, sputtering and ALD.</li>
+            <li>Quantify SOT efficiency with harmonic Hall measurements; low-temperature, high-field transport in Dynacool PPMS and BlueFors dilution refrigerators, including mesoscopic Josephson junctions.</li>
+            <li>Developed wafer-scale processes on 100&nbsp;mm Si/SiO<sub>2</sub> (BOE cleaning, alignment markers, metallization, dicing) for device yield and reproducibility.</li>
+            <li>Mentor Master's students; collaborate with international groups on superconducting and topological devices.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="when">2018 – 2023</div>
+        <div>
+          <h3>PhD in Experimental Physics</h3>
+          <div class="where">Department of Physics, Indian Institute of Technology Delhi · Supervisor: Prof. Sujeet Chaudhary</div>
+          <ul>
+            <li>Developed a universal magnetron-sputtering methodology for Te-based topological and 2D magnetic thin films.</li>
+            <li>Reduced surface roughness from ~1.5&nbsp;nm to ~0.4&nbsp;nm with nm-scale thickness control, verified by XRR and AFM.</li>
+            <li>Studied weak antilocalization, spin pumping and spin Seebeck effects in topological insulator/ferromagnet heterostructures.</li>
+          </ul>
+          <p class="thesis">Thesis: <em>Magnetotransport and Spin Dynamics Investigations on Te-based Topological Materials and Sputtered Heterostructures</em> · awarded Distinction</p>
+        </div>
+      </li>
+      <li>
+        <div class="when">2016 – 2018</div>
+        <div>
+          <h3>M.Sc. Physics</h3>
+          <div class="where">Indian Institute of Technology Ropar · Silver Medal, highest marks in batch</div>
+          <p class="thesis">Thesis: <em>Synthesis and characterization of one-dimensional MoS<sub>2</sub> nanostructures by chemical vapour deposition</em> (Prof. Mukesh Kumar)</p>
+        </div>
+      </li>
+      <li>
+        <div class="when">2013 – 2016</div>
+        <div>
+          <h3>B.Sc. (Hons.) Physics</h3>
+          <div class="where">Sri Venkateswara College, University of Delhi</div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="skills">
+    <div class="sechead"><h2>Skills</h2><p>Cleanroom to cryostat</p></div>
+    <div class="skills">
+      <div>
+        <h3>Thin-film growth</h3>
+        <div class="chips"><span class="chip">DC/RF magnetron sputtering</span><span class="chip">Ion-beam sputtering</span><span class="chip">E-beam evaporation</span><span class="chip">ALD</span><span class="chip">CVD</span><span class="chip">Interface engineering</span></div>
+      </div>
+      <div>
+        <h3>Nanofabrication</h3>
+        <div class="chips"><span class="chip">E-beam lithography</span><span class="chip">Raith EBPG 5200</span><span class="chip">JEOL JBX-9300FS</span><span class="chip">ICP-RIE</span><span class="chip">IBE / RIBE</span><span class="chip">100 mm wafer processing</span><span class="chip">Lift-off &amp; dicing</span></div>
+      </div>
+      <div>
+        <h3>Magnetic &amp; transport measurements</h3>
+        <div class="chips"><span class="chip">Harmonic Hall</span><span class="chip">Magnetotransport</span><span class="chip">VNA-FMR</span><span class="chip">ST-FMR</span><span class="chip">VSM</span><span class="chip">MOKE</span><span class="chip">PPMS</span><span class="chip">Dilution refrigerator</span><span class="chip">Spin pumping</span></div>
+      </div>
+      <div>
+        <h3>Structural characterization</h3>
+        <div class="chips"><span class="chip">XRD</span><span class="chip">XRR</span><span class="chip">AFM</span><span class="chip">SEM / EDX</span><span class="chip">Raman</span><span class="chip">SIMS</span></div>
+      </div>
+      <div>
+        <h3>Software &amp; data</h3>
+        <div class="chips"><span class="chip">Python</span><span class="chip">LabVIEW</span><span class="chip">Origin</span><span class="chip">Arduino</span><span class="chip">LaTeX</span></div>
+      </div>
+      <div>
+        <h3>Teaching &amp; mentoring</h3>
+        <div class="chips"><span class="chip">5 Master's students supervised</span><span class="chip">XRD user training</span><span class="chip">PPMS user training</span><span class="chip">UG labs: electronics, optics</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="sechead"><h2>Publications</h2><p>Selected, newest first</p></div>
+    <div>
+      <div class="pubtools">
+        <div class="seg" role="group" aria-label="Filter publications">
+          <button type="button" id="f-all" aria-pressed="true" data-f="all">All</button>
+          <button type="button" id="f-first" aria-pressed="false" data-f="first">First author</button>
+        </div>
+        <span class="pubcount" id="pubcount"></span>
+      </div>
+      <ul class="pubs" id="pubs"></ul>
+      <p class="morepubs">Full list of 40+ papers on <a id="scholarLink2" href="https://scholar.google.com/citations?user=5H2qZDMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="sechead"><h2>Awards &amp; talks</h2><p>Recognition and service</p></div>
+    <div class="twocol">
+      <div>
+        <h3 style="margin-bottom:6px">Honors</h3>
+        <ul class="list">
+          <li><span class="y">2023–25</span><span>WISE Postdoctoral Fellowship<small>Wallenberg Initiative Materials Science for Sustainability, Chalmers</small></span></li>
+          <li><span class="y">2024</span><span>Seal of Excellence<small>Marie Skłodowska-Curie Postdoctoral Fellowship</small></span></li>
+          <li><span class="y">2025</span><span>Best Poster Award<small>Swedish–Korean Orbitronics Workshop</small></span></li>
+          <li><span class="y">2023</span><span>Distinction award for doctoral thesis<small>IIT Delhi</small></span></li>
+          <li><span class="y">2018</span><span>Silver Medal, highest marks in M.Sc. Physics<small>IIT Ropar</small></span></li>
+          <li><span class="y">—</span><span>Qualified JAM, JEST, CSIR-UGC NET and GATE (Physics)</span></li>
+          <li><span class="y">—</span><span>CBSE Merit Scholarship<small>Top 1% nationwide</small></span></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:6px">Talks &amp; posters</h3>
+        <ul class="list">
+          <li><span class="y">2025</span><span>Joint MMM–Intermag Conference <span class="star">Oral</span><small>Unconventional spin–orbit torque in vdW heterostructures</small></span></li>
+          <li><span class="y">2025</span><span>Graphene Workshop <span class="star">Oral</span><small>Spin–orbit torque in vdW heterostructures</small></span></li>
+          <li><span class="y">2025</span><span>Swedish–Korean Orbitronics Workshop <span class="star">Poster · Best Poster</span></span></li>
+          <li><span class="y">2022</span><span>MRS Spring Meeting <span class="star">Oral</span><small>Magnetotransport in Bi<sub>x</sub>Te<sub>y</sub> thin films</small></span></li>
+          <li><span class="y">2022</span><span>IUMRS-ICA Conference <span class="star">Poster</span><small>Weak antilocalization in sputtered XTe<sub>2</sub> films</small></span></li>
+        </ul>
+        <h3 style="margin:26px 0 6px">Service</h3>
+        <ul class="list">
+          <li><span class="y">2026</span><span>Management Committee, Swedish Magnetism Meeting, Gothenburg</span></li>
+          <li><span class="y">—</span><span>Reviewer<small>Physical Review Letters, Advanced Materials, Physical Review B, JMMM</small></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="border-bottom:0">
+    <div class="sechead"><h2>Contact</h2><p>Collaborations welcome</p></div>
+    <div class="contact">
+      <p class="prose" style="margin:0 0 4px;max-width:60ch">I am happy to talk about collaborations, device fabrication, or spintronics research and industry roles.</p>
+      <div class="crow"><span class="k">Email</span><span class="v" id="em">lalit.pandey@chalmers.se</span><button class="copy" type="button" data-copy="em">Copy</button></div>
+      <div class="crow"><span class="k">Office</span><span class="v" style="user-select:text;font-weight:500">MC2, Chalmers University of Technology, Kemivägen 9, 412 96 Gothenburg, Sweden</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Lalit Pandey</span>
+    <span>Gothenburg, Sweden</span>
+  </footer>
+</div>
+
+<script>
+/* ---------- publications ---------- */
+const PUBS = [
+  {y:2026,t:"Growth and investigations of the two-dimensional van der Waals CrTe₂ films by the sputtering route: influence of crystallinity and film thickness on their magnetization and transport behavior",a:"N. Kumar, N. Sharma, L. Pandey, S. Hait, N. K. Gupta, S. Pati, S. Pandey, A. Chaudhary, S. Chaudhary",j:"Phys. Rev. Applied 25, 014034 (2026)"},
+  {y:2025,t:"Tunable unconventional spin–orbit torque magnetization dynamics in van der Waals heterostructures",a:"L. Pandey, B. Zhao, K. Tenzin, R. Ngaloy, V. Lamparská, H. Bangar, A. Ali, M. Abdel-Hafiez, G. Zhang, H. Wu, et al.",j:"Nature Communications 16, 8722 (2025)",first:1},
+  {y:2025,t:"Field-free spin–orbit torque switching of canted van der Waals magnets",a:"B. Zhao, L. Pandey, K. Ali, E. Wang, C. M. Polley, B. Thiagarajan, P. Makk, M. H. D. Guimarães, S. P. Dash",j:"ACS Nano 19, 13817–13824 (2025)"},
+  {y:2025,t:"Large orbital to charge conversion in the weak spin–orbit coupling element Zr in Zr/Co₆₀Fe₂₀B₂₀ via spin-orbital pumping and spin-orbital Seebeck effect",a:"N. Kumar, N. Sharma, S. Hait, L. Pandey, N. K. Gupta, N. Shukla, S. Pati, A. Pandey, M. Mitali, S. Chaudhary",j:"Phys. Rev. B 111, 094410 (2025)"},
+  {y:2025,t:"Thickness-dependent perpendicular magnetic anisotropy and topological Hall effect in magnetic Weyl Co₂MnGa and topological insulator Bi₂Te₃-based heterostructures",a:"N. Sharma, L. Pandey, N. Kumar, S. Hait, N. K. Gupta, S. Pati, S. Singh, M. Mitali, S. Chaudhary",j:"Phys. Rev. B 112, 174418 (2025)"},
+  {y:2025,t:"Tuning substrate temperature for improved adhesion and mechanical properties of magnetron sputtered high entropy alloy thin films",a:"M. Subhakar, L. Pandey, S. Chaudhary, S. Jaiswal, S. P. Singh, S. S. Mahmud, Y. L. Chiu, I. P. Jones, J. Jain",j:"Thin Solid Films 770, 140817 (2025)"},
+  {y:2024,t:"Energy-efficient field-free unconventional spin–orbit torque magnetization switching dynamics in van der Waals heterostructures",a:"L. Pandey, B. Zhao, K. Tenzin, R. Ngaloy, V. Lamparská, H. Bangar, A. Ali, M. Abdel-Hafiez, G. Zhang, H. Wu, et al.",j:"arXiv:2408.13095 (2024)",first:1,url:"https://arxiv.org/abs/2408.13095"},
+  {y:2024,t:"Tuning of spin-to-charge conversion in topological insulator based Sb₂Te₃/Ru/Co₆₀Fe₂₀B₂₀/Ru heterostructures investigated by inverse spin Hall effect and spin Seebeck effect",a:"N. Kumar, S. Hait, L. Pandey, N. Sharma, N. K. Gupta, S. Chaudhary",j:"Phys. Rev. B 110, 134411 (2024)"},
+  {y:2024,t:"Spin-to-charge conversion efficiency in the topological insulator Bi₂Te₃ and heavy metals W and Pt stacked with the ferromagnetic Weyl semimetal Co₂MnGa",a:"N. Sharma, N. Kumar, L. Pandey, N. K. Gupta, S. Hait, S. Pati, A. Pandey, S. Chaudhary",j:"Phys. Rev. B 110, 094402 (2024)"},
+  {y:2023,t:"Topological transport properties of highly oriented Bi₂Te₃ thin films deposited by sputtering",a:"L. Pandey, S. Husain, V. Barwal, S. Hait, N. K. Gupta, V. Mishra, N. Kumar, N. Sharma, D. Dixit, V. Singh, S. Chaudhary",j:"J. Phys.: Condens. Matter 35, 355702 (2023)",first:1},
+  {y:2023,t:"Topological surface state induced spin pumping in sputtered Bi₂Te₃/Co₆₀Fe₂₀B₂₀ heterostructures",a:"L. Pandey, R. Gupta, A. Kumar, N. K. Gupta, S. Hait, N. Kumar, V. Mishra, N. Sharma, P. Svedlindh, S. Chaudhary",j:"J. Appl. Phys. 134, 044203 (2023)",first:1},
+  {y:2023,t:"High temperature stability in few atomic layer MoS₂-based thin film heterostructures: structural, static and dynamic magnetization properties",a:"N. K. Gupta, A. Kumar, L. Pandey, S. Hait, V. Barwal, A. Khan, V. Mishra, N. Sharma, N. Kumar, S. Chaudhary",j:"Nanoscale 15, 12694–12709 (2023)"},
+  {y:2023,t:"Disordered spin gapless semiconducting CoFeCrGa Heusler alloy thin films on Si(100): experiment and theory",a:"V. Mishra, A. Kumar, L. Pandey, N. K. Gupta, S. Hait, V. Barwal, N. Sharma, N. Kumar, S. Chaudhary",j:"Nanoscale 15, 337–349 (2023)"},
+  {y:2023,t:"Investigation and tailoring the strengths of positive and negative exchange bias in ion-beam sputtered Ni₈₁Fe₁₉/Ir₇Mn₉₃ bilayers by tuning the grain size of the antiferromagnetic layer",a:"S. Kedia, N. Kumar, N. Sharma, L. Pandey, N. K. Gupta, S. Chaudhary",j:"J. Magn. Magn. Mater. 584, 171073 (2023)"},
+  {y:2023,t:"Effect of the growth rate on the structural, magnetic and transport properties of NiFe thin films",a:"E. Goyat, L. Pandey, S. Hait, N. K. Gupta, V. Mishra, N. Kumar, H. Singh, N. Sharma, S. Chaudhary",j:"J. Mater. Sci.: Mater. Electron. 34, 1111 (2023)"},
+  {y:2022,t:"Weak antilocalization and electron–electron interactions in BiₓTeᵧ films deposited by sputtering on Si(100)",a:"L. Pandey, S. Husain, X. Chen, V. Barwal, S. Hait, N. K. Gupta, V. Mishra, A. Kumar, N. Sharma, N. Kumar, L. Saravanan, D. Dixit, B. Sanyal, S. Chaudhary",j:"Phys. Rev. Materials 6, 044203 (2022)",first:1},
+  {y:2022,t:"Spin pumping through different spin–orbit coupling interfaces in β-W/interlayer/Co₂FeAl heterostructures",a:"S. Hait, S. Husain, H. Bangar, L. Pandey, V. Barwal, N. Kumar, N. K. Gupta, V. Mishra, N. Sharma, P. Gupta, B. S. Yadav, S. Chaudhary",j:"ACS Appl. Mater. Interfaces 14, 37182–37191 (2022)"},
+  {y:2022,t:"Spin pumping in nanolayers of WS₂/Co₂FeAl heterostructures: large spin mixing conductance and spin transparency",a:"S. Hait, N. K. Gupta, N. Sharma, L. Pandey, N. Kumar, V. Barwal, P. Kumar, S. Husain, S. Chaudhary",j:"J. Appl. Phys. 132, 133901 (2022)"},
+  {y:2022,t:"Spin-pumping investigations in Co₆₀Fe₂₀B₂₀/Mo heterostructures",a:"N. K. Gupta, A. Kumar, L. Pandey, S. Hait, V. Barwal, V. Mishra, N. Sharma, N. Kumar, S. Husain, S. Chaudhary",j:"J. Appl. Phys. 132, 213905 (2022)"},
+  {y:2022,t:"Large exchange bias and spin pumping in ultrathin IrMn/Co system for spintronic device applications",a:"E. Goyat, N. Behera, V. Barwal, R. Siwach, G. Goyat, N. K. Gupta, L. Pandey, N. Kumar, S. Hait, S. Chaudhary",j:"Appl. Surf. Sci. 588, 152914 (2022)"},
+  {y:2022,t:"Uniaxial magnetic anisotropy in W/Co₂₀Fe₆₀B₂₀/W structures with high thermal stability",a:"L. Saravanan, N. K. Gupta, L. Pandey, I. P. Kokila, H. A. Therese, S. Chaudhary",j:"J. Alloys Compd. 895, 162600 (2022)"},
+  {y:2022,t:"Perpendicular magnetic anisotropy in CoFeMnSi-based heterostructures",a:"L. Saravanan, V. Mishra, L. Pandey, N. K. Gupta, N. Kumar, R. Gopalan, D. Prabhu, H. A. Therese, S. Chaudhary",j:"J. Magn. Magn. Mater. 561, 169693 (2022)"},
+  {y:2021,t:"Low Gilbert damping in sputtered Co₂FeAl films: growth versus annealing",a:"S. Hait, S. Husain, V. Barwal, N. K. Gupta, L. Pandey, V. Mishra, N. Sharma, P. Svedlindh, S. Chaudhary",j:"J. Magn. Magn. Mater. 519, 167509 (2021)"},
+  {y:2021,t:"Spin gapless semiconducting behavior in inverse Heusler Mn₂₋ₓCo₁₊ₓAl thin films",a:"V. Barwal, N. Behera, S. Husain, N. K. Gupta, S. Hait, L. Pandey, V. Mishra, S. Chaudhary",j:"J. Magn. Magn. Mater. 518, 167404 (2021)"},
+  {y:2020,t:"Structural and magneto-transport properties of co-sputtered MnAl thin films",a:"V. Barwal, S. Husain, N. K. Gupta, S. Hait, L. Pandey, S. Chaudhary",j:"J. Magn. Magn. Mater. 503, 166654 (2020)"}
+];
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function scholarUrl(p){ return p.url || "https://scholar.google.com/scholar?q=" + encodeURIComponent('"' + p.t + '"'); }
+function renderPubs(filter){
+  const list = document.getElementById('pubs');
+  const items = PUBS.filter(p => filter === 'all' || p.first);
+  let html = '', lastY = null;
+  for (const p of items){
+    if (p.y !== lastY){ html += '<li class="yr">' + p.y + '</li>'; lastY = p.y; }
+    const authors = esc(p.a).replace('L. Pandey', '<b>L. Pandey</b>');
+    html += '<li class="pub"><a class="t" href="' + scholarUrl(p) + '" target="_blank" rel="noopener">' + esc(p.t) + '</a>'
+         + '<span class="a">' + authors + '</span>'
+         + '<span class="j">' + esc(p.j) + (p.first ? '<span class="badge">First author</span>' : '') + '</span></li>';
+  }
+  list.innerHTML = html;
+  document.getElementById('pubcount').textContent = items.length + ' shown';
+}
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+  renderPubs(b.dataset.f);
+}));
+renderPubs('all');
+
+/* ---------- copy ---------- */
+document.querySelectorAll('.copy').forEach(btn => btn.addEventListener('click', () => {
+  const el = document.getElementById(btn.dataset.copy);
+  const txt = el.textContent.trim();
+  const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = 'Copy', 1600); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected'; setTimeout(() => btn.textContent = 'Copy', 1600); };
+  try { navigator.clipboard.writeText(txt).then(done, fallback); } catch(e){ fallback(); }
+}));
+
+/* ---------- spin lattice ---------- */
+(function(){
+  const cv = document.getElementById('spins'); if (!cv) return;
+  const ctx = cv.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const COLS = 16, ROWS = 10;
+  let W, H, dpr, cell, ox, oy;
+  // state: angle theta for each spin (0 = up, PI = down)
+  const theta = new Float32Array(COLS*ROWS);
+  let target = 1; // switching toward down (+1 means toward PI)
+  let pulseX = -0.2, phase = 'pulse', hold = 0;
+  for (let i=0;i<theta.length;i++) theta[i] = 0;
+
+  function col(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function size(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const r = cv.getBoundingClientRect();
+    W = r.width; H = r.width * 0.75;
+    cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const trackH = H*0.16;
+    cell = Math.min(W/COLS, (H - trackH - 8)/ROWS);
+    ox = (W - cell*COLS)/2; oy = 6;
+  }
+  function mix(a,b,t){
+    const pa = parseInt(a.slice(1),16), pb = parseInt(b.slice(1),16);
+    const r = Math.round(((pa>>16)&255)*(1-t) + ((pb>>16)&255)*t);
+    const g = Math.round(((pa>>8)&255)*(1-t) + ((pb>>8)&255)*t);
+    const bl = Math.round((pa&255)*(1-t) + (pb&255)*t);
+    return 'rgb('+r+','+g+','+bl+')';
+  }
+  function draw(){
+    const up = col('--up'), down = col('--down'), ink = col('--ink'), muted = col('--muted'), line = col('--line');
+    ctx.clearRect(0,0,W,H);
+    for (let r=0;r<ROWS;r++) for (let c=0;c<COLS;c++){
+      const th = theta[r*COLS+c];
+      const cx = ox + c*cell + cell/2, cy = oy + r*cell + cell/2;
+      const t = (1 - Math.cos(th))/2; // 0 up -> 1 down
+      const len = cell*0.36;
+      const dx = Math.sin(th)*len*0.9, dy = -Math.cos(th)*len;
+      ctx.strokeStyle = mix(up, down, t); ctx.fillStyle = ctx.strokeStyle;
+      ctx.lineWidth = Math.max(1.4, cell*0.075); ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(cx-dx, cy-dy); ctx.lineTo(cx+dx, cy+dy); ctx.stroke();
+      // arrow head
+      const hx = cx+dx, hy = cy+dy, ang = Math.atan2(dy, dx), hs = cell*0.15;
+      ctx.beginPath(); ctx.moveTo(hx, hy);
+      ctx.lineTo(hx - hs*Math.cos(ang-0.5), hy - hs*Math.sin(ang-0.5));
+      ctx.lineTo(hx - hs*Math.cos(ang+0.5), hy - hs*Math.sin(ang+0.5));
+      ctx.closePath(); ctx.fill();
+    }
+    // current channel
+    const ty = oy + ROWS*cell + 10, th2 = H - ty - 4;
+    ctx.fillStyle = line; ctx.fillRect(ox, ty, cell*COLS, th2);
+    if (phase === 'pulse'){
+      const px = ox + pulseX*cell*COLS;
+      const g = ctx.createLinearGradient(px - cell*3, 0, px, 0);
+      g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, ink);
+      ctx.save(); ctx.beginPath(); ctx.rect(ox, ty, cell*COLS, th2); ctx.clip();
+      ctx.fillStyle = g; ctx.globalAlpha = .55; ctx.fillRect(px - cell*3, ty, cell*3, th2); ctx.restore();
+    }
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = muted; ctx.font = '500 ' + Math.max(10, cell*0.42) + 'px "JetBrains Mono", monospace';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('J (charge current) →', ox + 8, ty + th2/2);
+    const lbl = 'H = 0';
+    ctx.fillText(lbl, ox + cell*COLS - ctx.measureText(lbl).width - 8, ty + th2/2);
+  }
+  function step(){
+    if (phase === 'pulse'){
+      pulseX += 0.009;
+      for (let r=0;r<ROWS;r++) for (let c=0;c<COLS;c++){
+        const i = r*COLS+c, front = (c+0.5)/COLS + (Math.sin(r*1.7)*0.03);
+        const goal = target > 0 ? Math.PI : 0;
+        if (pulseX > front) theta[i] += (goal - theta[i]) * 0.12;
+      }
+      if (pulseX > 1.25){ phase = 'hold'; hold = 0; }
+    } else {
+      hold++;
+      if (hold > 90){ target = -target; pulseX = -0.2; phase = 'pulse'; }
+    }
+    draw();
+    requestAnimationFrame(step);
+  }
+  size();
+  if (reduce){
+    // static frame: half switched
+    for (let r=0;r<ROWS;r++) for (let c=0;c<COLS;c++) theta[r*COLS+c] = c < COLS/2 ? Math.PI : 0;
+    phase = 'hold'; draw();
+  } else { requestAnimationFrame(step); }
+  window.addEventListener('resize', () => { size(); draw(); });
+  try { window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw); } catch(e){}
+})();
+</script>
+
+</body>
+</html>
